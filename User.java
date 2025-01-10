@@ -44,8 +44,8 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         //// Replace the following statement with your code
-        for(int i=0; i<maxfCount; i++){
-            if (follows[i]==name) {
+        for(int i=0; i<fCount; i++){
+            if (this.follows[i]==name) {
             return true;                
             }
         }
@@ -76,17 +76,18 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
-        for(int i=0; i<maxfCount; i++){
+        for(int i=0; i<fCount; i++){
             if (follows[i]== name) {
-                for(int j =i; j< maxfCount-1; j++){
-                    follows[i]=follows[i+1];
+                for(int j =i; j< fCount-1; j++){
+                    follows[j]=follows[j+1];
                 }  
-                follows [maxfCount-1]=null; 
+                follows [fCount-1]=null; 
+                fCount--;
                 return true;
             }
-            if (follows[i]!=name && i==(maxfCount-1)) {
-                return false;
-            }
+            // if (follows[i]!=name && i==(maxfCount-1)) {
+            //     return false;
+            // }
             
         }
         return false;
@@ -112,7 +113,7 @@
      *  (if two users follow each other, they are said to be "friends.") */
     public boolean isFriendOf(User other) {
         //// Replace the following statement with your code
-        if (follows(other.getName())==other.follows(this.name)) {
+        if (follows(other.getName())==true && other.follows(this.name)== true) {
             return true;
         }
         return false;
