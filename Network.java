@@ -73,7 +73,7 @@ public class Network {
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
         //// Replace the following statement with your code
-        String mostRecommendedUserToFollow = "";
+        String mostRecommendedUserToFollow = "null";
         int max = 0;
         for(int i = 0; i < userCount; i++ ){
             if (users[i].getName()==name) {
@@ -127,7 +127,6 @@ public class Network {
        for(int i =0; i< userCount; i++){
         ans= ans + System.lineSeparator() + users[i].toString();
        }
-
         return ans;
     }
 }
