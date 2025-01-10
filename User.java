@@ -45,7 +45,7 @@
     public boolean follows(String name) {
         //// Replace the following statement with your code
         for(int i=0; i<fCount; i++){
-            if (this.follows[i]==name) {
+            if (follows[i].equals(name)==true) {
             return true;                
             }
         }
@@ -55,21 +55,16 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         //// Replace the following statement with your code
-        for(int i=0; i<maxfCount; i++){
-            if (follows[i]==name) {
-                return false;                
-            }
-            if (follows[i]!=null && i==(maxfCount-1)) {
-                return false;
-            }
-            if (follows[i]==null) {
-                follows[i]=name;
-                fCount++;
-                return true;
-            }
+        
+        if (follows(name)==true) {
+            return false;                
         }
-        return false;
-
+        if (fCount==maxfCount) {
+            return false;
+        }
+        follows[fCount]=name;
+        fCount++;
+        return true;
     }
 
     /** Removes the given name from the follows list of this user. If successful, returns true.
@@ -77,7 +72,7 @@
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
         for(int i=0; i<fCount; i++){
-            if (follows[i]== name) {
+            if (follows[i].equals(name)==true) {
                 for(int j =i; j< fCount-1; j++){
                     follows[j]=follows[j+1];
                 }  
